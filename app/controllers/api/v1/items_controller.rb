@@ -21,7 +21,14 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def destroy
-    @item_to
+    @item_to_delete = Item.find(params[:id])
+
+    if @item_to_delete.destroy
+      render json: { success: 'Item has been destroy' }
+    else
+      render json: { error: 'Item is not in storage or has been deleted' }
+    end
+  end
 
   private
 

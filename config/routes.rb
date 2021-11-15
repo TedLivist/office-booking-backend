@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1, default: { format: 'json' } do
       get '/:username/reservations', to: 'reservations#index'
       post '/:username/reservations', to: 'reservations#create'
-      resources :reservations, only: [:destroy]
+      delete '/:username/reservations/:id', to: 'reservations#destroy'
     end
   end
 end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :v1, default: { format: 'json' } do
-    resources :reservations, only: [:index, :create, :destroy]
+    get '/:username/reservations', to: 'reservations#index'
+    resources :reservations, only: [:create, :destroy]
   end
 end

@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :items, only: [:index, :show, :create, :destroy]
+
+      get '/:username/reservations', to: 'reservations#index'
+      post '/:username/reservations', to: 'reservations#create'
+      delete '/:username/reservations/:id', to: 'reservations#destroy'
     end
   end
 end

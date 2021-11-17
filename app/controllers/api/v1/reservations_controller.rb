@@ -3,7 +3,7 @@ class Api::V1::ReservationsController < ApplicationController
     @reservations = User.find_by(username: params[:username]).reservations.includes(:item)
     render json: {
       reservations:
-         @reservations.map do |reservation|
+        @reservations.map do |reservation|
           {
             id: reservation.id,
             item_id: reservation.item_id,

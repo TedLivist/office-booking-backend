@@ -1,8 +1,22 @@
 class Api::V1::ReservationsController < ApplicationController
   def index
-    @reservations = User.find_by(username: params[:username]).reservations
+    @reservations = User.find_by(username: params[:username]).reservations.includes(:item)
     render json: {
-      reservations: @reservations
+      reservations:
+         @reservations.map do |reservation|
+          {
+            id: reservation.id,
+            item_id: reservation.item_id,
+            start_date: reservation.start_date,
+            end_date: reservation.end_date,
+            item: {
+              id: reservation.item.id,
+              name: reservation.item.name,
+              description: reservation.item.description,
+              image: reservation.item.image
+            }
+          }
+        end
     }.to_json
   end
 

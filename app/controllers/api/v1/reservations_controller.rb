@@ -12,7 +12,7 @@ class Api::V1::ReservationsController < ApplicationController
             item: {
               id: reservation.item.id,
               name: reservation.item.name,
-              description: reservation.item.description,
+              location: reservation.item.location,
               image: reservation.item.image
             }
           }

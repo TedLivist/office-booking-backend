@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :items, only: [:index, :show, :create, :destroy]
 
       get '/:username/reservations', to: 'reservations#index'
+      post '/login', to: 'users#login'
       post '/:username/reservations', to: 'reservations#create'
       delete '/:username/reservations/:id', to: 'reservations#destroy'
     end

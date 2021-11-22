@@ -11,9 +11,11 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def create
-    @item_to_save = Item.new(item_params)
+    @image = Cloudinary::Uploader.upload(params[:image])
+    @item = Item.new(item_params)
+    @item.image = @image['url']
 
-    if @item_to_save.save
+    if @item.save
       render json: { success: 'Item saved' }
     else
       render json: { error: 'Unable to save item' }
@@ -34,6 +36,6 @@ class Api::V1::ItemsController < ApplicationController
   private
 
   def item_params
-    params.permit(:name, :location, :description)
+    params.permit(:name, :location, :image, :description)
   end
 end

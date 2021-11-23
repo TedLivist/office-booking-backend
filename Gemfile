@@ -35,15 +35,10 @@ gem "rswag", "~> 2.4"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-<<<<<<< HEAD
-  gem "rspec-rails"
-  gem "rswag-specs"
-=======
   gem 'rspec-rails'
   gem 'rswag-specs'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.19'
->>>>>>> e51da0abee921ebea2c42bb39fd0015dde39cf14
 end
 
 # group :test do

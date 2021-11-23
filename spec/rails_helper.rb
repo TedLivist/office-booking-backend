@@ -3,11 +3,7 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
-<<<<<<< HEAD
-abort("The Rails environment is running in production mode!") if Rails.env.production?
-=======
 abort('The Rails environment is running in production mode!') if Rails.env.production?
->>>>>>> e51da0abee921ebea2c42bb39fd0015dde39cf14
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -24,11 +20,7 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-<<<<<<< HEAD
-# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
-=======
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
->>>>>>> e51da0abee921ebea2c42bb39fd0015dde39cf14
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -70,10 +62,7 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
-<<<<<<< HEAD
-=======
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 end
->>>>>>> e51da0abee921ebea2c42bb39fd0015dde39cf14

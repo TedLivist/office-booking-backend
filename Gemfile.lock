@@ -122,10 +122,7 @@ GEM
     parser (3.0.2.0)
       ast (~> 2.4.1)
     pg (1.2.3)
-<<<<<<< HEAD
-=======
     pg (1.2.3-x64-mingw32)
->>>>>>> e51da0abee921ebea2c42bb39fd0015dde39cf14
     public_suffix (4.0.6)
     puma (5.5.2)
       nio4r (~> 2.0)
@@ -209,11 +206,7 @@ GEM
     rswag-ui (2.4.0)
       actionpack (>= 3.1, < 7.0)
       railties (>= 3.1, < 7.0)
-<<<<<<< HEAD
-    rubocop (1.23.0)
-=======
     rubocop (1.22.3)
->>>>>>> e51da0abee921ebea2c42bb39fd0015dde39cf14
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
@@ -265,11 +258,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 6.1.4, >= 6.1.4.1)
   rspec-rails
-<<<<<<< HEAD
-  rswag (~> 2.4)
-=======
   rswag
->>>>>>> e51da0abee921ebea2c42bb39fd0015dde39cf14
   rswag-specs
   rubocop (>= 1.0, < 2.0)
   spring

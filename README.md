@@ -1,24 +1,83 @@
-# README
+# Office booking backend Final project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> Office booking is a rails REST API appliation that allows users to authenticate, add offices and make reservations.
 
-Things you may want to cover:
+## Built With
 
-* Ruby version
+- Ruby v3.0.1
+- Ruby on Rails v6.1.4
 
-* System dependencies
+## Front end
 
-* Configuration
+[Office Booking Frontend ](https://github.com/TedLivist/office-booking-frontend)
 
-* Database creation
+## Getting Started
 
-* Database initialization
+To get a local copy up and running follow these simple example steps.
 
-* How to run the test suite
+clone the repo on your machine 
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+git clone https://github.com/TedLivist/office-booking-backend.git
+```
 
-* Deployment instructions
+### Setup
 
-* ...
+Instal gems with:
+
+```
+bundle install
+```
+
+Setup database with:
+
+```
+   rails db:create
+   rails db:migrate
+```
+### Usage
+
+Start server with:
+
+```
+    rails server
+```
+
+## Authors
+
+ 👤 **Safa Aballagh**
+
+- GitHub: [@safafa](https://github.com/safafa)
+- Twitter: [@safa aballagh](https://twitter.com/Aballagh_S)
+- LinkedIn: [Aballagh Safa](https://www.linkedin.com/in/aballaghsafa/)
+
+ 👤 **Lameck Otieno**
+
+- GitHub: [@Lameck1](https://github.com/Lameck1)
+- Twitter: [@lameck721](https://twitter.com/lameck721)
+- LinkedIn: [Lameck Otieno](https://www.linkedin.com/in/lameck-otieno/)
+
+ 👤 **Peter Mbuthia**
+
+- GitHub: [@blakbox23](https://github.com/blakbox23)
+- Twitter: [@blakbox](https://twitter.com/blakbox23)
+- LinkedIn: [Peter Mbuthia](https://www.linkedin.com/in/peter-mbuthia/)
+
+👤 **Teddy-Livingstone Ememandu**
+
+- GitHub: [@TedLivist](https://github.com/TedLivist)
+- LinkedIn: [Teddy-Livingstone Ememandu](https://www.linkedin.com/in/tememandu/)
+
+
+
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+

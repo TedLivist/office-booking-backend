@@ -1,0 +1,245 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/items":
+    get:
+      summary: list items
+      tags:
+      - Items
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer Token
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    location:
+                      type: string
+                    description:
+                      type: string
+                    image:
+                      type: string
+                    created_at:
+                      type: string
+                    updated_at:
+                      type: string
+    post:
+      summary: create item
+      tags:
+      - Items
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer Token
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Item Created
+  "/api/v1/items/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show item
+      tags:
+      - Items
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer Token
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Item Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  location:
+                    type: string
+                  description:
+                    type: string
+                  image:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                required:
+                - id
+    delete:
+      summary: delete item
+      tags:
+      - Items
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer Token
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Item Deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  location:
+                    type: string
+                  description:
+                    type: string
+                  image:
+                    type: string
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                required:
+                - id
+  "/api/v1/{username}/reservations":
+    parameters:
+    - name: username
+      in: path
+      description: username
+      required: true
+      schema:
+        type: string
+    get:
+      summary: list reservations
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer Token
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create reservation
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer Token
+        schema:
+          type: string
+      responses:
+        '201':
+          description: successful
+    delete:
+      summary: delete reservation
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer Token
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: reservation id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: successful
+  "/api/v1/login":
+    post:
+      summary: Log a user
+      tags:
+      - Users login
+      parameters: []
+      responses:
+        '200':
+          description: User Logged in
+        '404':
+          description: not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+              required:
+              - username
+  "/api/v1/users":
+    post:
+      summary: Create a user
+      tags:
+      - Users SignUp
+      parameters: []
+      responses:
+        '200':
+          description: User Created
+        '400':
+          description: Invalid username
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+              required:
+              - username
+components:
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Bearer token
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com

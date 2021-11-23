@@ -29,10 +29,20 @@ gem 'rack-cors'
 gem 'jwt'
 gem 'cloudinary'
 
+gem "rswag", "~> 2.4"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'rswag-specs'
+  gem 'factory_bot_rails', '~> 6.2'
+  gem 'faker', '~> 2.19'
 end
+
+# group :test do
+#   gem "webmock", "~> 3.14"
+# end
 
 group :development do
   gem 'listen', '~> 3.3'

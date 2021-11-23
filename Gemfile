@@ -28,7 +28,6 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'rack-cors'
 gem 'jwt'
 gem 'cloudinary'
-gem 'rswag'
 
 gem "rswag", "~> 2.4"
 

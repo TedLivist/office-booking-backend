@@ -8,7 +8,6 @@ RSpec.describe 'api/v1/items', type: :request do
       tags 'Items'
       produces 'application/json'
       security [Bearer: []]
-      consumes 'application/json'
       parameter name: :Authorization, in: :header, type: :string, description: 'Bearer Token'
 
       response(200, 'OK') do
@@ -18,77 +17,95 @@ RSpec.describe 'api/v1/items', type: :request do
                  properties: {
                    id: { type: :integer },
                    name: { type: :string },
+                   location: { type: :string },
                    description: { type: :string },
                    image: { type: :string },
                    created_at: { type: :string },
                    updated_at: { type: :string }
                  }
                }
-        let!(:user) { create(:user) }
-        let(:Authorization) { authenticated_header(user: user) }
-        let!(:item) { create(:item) }
-        # after do |example|
-        #   example.metadata[:response][:examples] =
-        #     { 'application/json' => JSON.parse(response.body, symbolize_names: true) }
-        # end
+        let(:Authorization) { authenticated_header(user: create(:user)) }
+        let(:item) { create(:item) }
         run_test!
       end
     end
 
-    #   post('create item') do
-    #     tags 'Items'
-    #     produces 'application/json'
-    #     parameter name: :item,
-    #               in: :body,
-    #               schema: {
-    #                 type: :object,
-    #                 properties: {
-    #                   name: { type: :string },
-    #                   description: { type: :string },
-    #                   image_url: { type: :string }
-    #                 },
-    #                 required: %w[name description image_url]
-    #               }
+    post('create item') do
+      tags 'Items'
+      produces 'application/json'
+      security [Bearer: []]
+      parameter name: :Authorization, in: :header, type: :string, description: 'Bearer Token'
+      parameter name: :item,
+                in: :body,
+                schema: {
+                  type: :object,
+                  properties: {
+                    name: { type: :string },
+                    location: { type: :string },
+                    image: { type: :string },
+                    description: { type: :string }
+                  },
+                  required: %w[name location image description]
+                }
 
-    #     response(201, 'Created') do
-    #       schema type: :object,
-    #              properties: {
-    #                id: { type: :integer },
-    #                name: { type: :string },
-    #                description: { type: :string },
-    #                image: { type: :string },
-    #                created_at: { type: :string },
-    #                updated_at: { type: :string }
-    #              }
+      response(201, 'Item Created') do
+        let(:Authorization) { authenticated_header(user: create(:user)) }
+        let(:item) { create(:item) }
+        run_test!
+      end
+    end
+  end
 
-    #       run_test!
-    #     end
-    #   end
-    # end
+  path '/api/v1/items/{id}' do
+    parameter name: 'id', in: :path, type: :string, description: 'id'
 
-    # path '/api/v1/items/{id}' do
-    #   parameter name: 'id', in: :path, type: :string, description: 'id'
+    get('show item') do
+      tags 'Items'
+      produces 'application/json'
+      security [Bearer: []]
+      parameter name: :Authorization, in: :header, type: :string, description: 'Bearer Token'
 
-    #   get('show item') do
-    #     tags 'Items'
-    #     produces 'application/json'
+      response(200, 'Item Found') do
+        schema type: :object,
+               properties: {
+                 id: { type: :integer },
+                 name: { type: :string },
+                 location: { type: :string },
+                 description: { type: :string },
+                 image: { type: :string },
+                 created_at: { type: :string },
+                 updated_at: { type: :string }
+               },
+               required: %w[id]
+        let(:user) { create(:user) }
+        let(:Authorization) { authenticated_header(user: user) }
+        let(:id) { create(:item).id }
+        run_test!
+      end
+    end
 
-    #     response(200, 'OK') do
-    #       schema type: :object,
-    #              properties: {
-    #                id: { type: :integer },
-    #                name: { type: :string },
-    #                description: { type: :string },
-    #                image: { type: :string },
-    #                created_at: { type: :string },
-    #                updated_at: { type: :string }
-    #              }
+    delete('delete item') do
+      tags 'Items'
+      produces 'application/json'
+      security [Bearer: []]
+      parameter name: :Authorization, in: :header, type: :string, description: 'Bearer Token'
 
-    #       run_test!
-    #     end
-    #   end
-
-    #   delete('delete item') do
-    #   end
+      response(200, 'Item Deleted') do
+        schema type: :object,
+               properties: {
+                 id: { type: :integer },
+                 name: { type: :string },
+                 location: { type: :string },
+                 description: { type: :string },
+                 image: { type: :string },
+                 created_at: { type: :string },
+                 updated_at: { type: :string }
+               },
+               required: %w[id]
+        let(:Authorization) { authenticated_header(user: create(:user)) }
+        let(:id) { create(:item).id }
+        run_test!
+      end
+    end
   end
 end

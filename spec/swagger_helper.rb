@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # frozen_string_literal: true
 
+=======
+>>>>>>> e51da0abee921ebea2c42bb39fd0015dde39cf14
 require 'rails_helper'
 
 RSpec.configure do |config|
@@ -22,6 +25,19 @@ RSpec.configure do |config|
         version: 'v1'
       },
       paths: {},
+<<<<<<< HEAD
+=======
+      components: {
+        securitySchemes: {
+          Bearer: {
+            type: :apiKey,
+            name: 'Authorization',
+            in: :header,
+            description: 'Bearer token'
+          }
+        }
+      },
+>>>>>>> e51da0abee921ebea2c42bb39fd0015dde39cf14
       servers: [
         {
           url: 'https://{defaultHost}',

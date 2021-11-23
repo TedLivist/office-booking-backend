@@ -23,7 +23,7 @@ git clone https://github.com/TedLivist/office-booking-backend.git
 
 ### Setup
 
-Instal gems with:
+Install gems with:
 
 ```
 bundle install
@@ -41,6 +41,12 @@ Start server with:
 
 ```
     rails server
+```
+
+Access documentation:
+
+```
+    localhost:3000/api-docs
 ```
 
 ## Authors

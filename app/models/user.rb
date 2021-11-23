@@ -1,5 +1,5 @@
 class User < ApplicationRecord
   has_many :reservations, dependent: :destroy
 
-  validates :username, presence: true, length: { minimum: 3 }
+  validates :username, presence: true, length: { minimum: 3 }, uniqueness: true
 end

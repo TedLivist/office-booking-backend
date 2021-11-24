@@ -7,7 +7,7 @@ class Api::V1::UsersController < ApplicationController
       token = encode_token({ user_id: @user.id })
       render json: { user: @user.username, token: token }, status: :ok
     else
-      render json: { error: 'Invalid username' }, status: 400
+      render json: @user.errors.full_messages, status: 400
     end
   end
 

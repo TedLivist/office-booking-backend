@@ -11,7 +11,7 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def create
-    @image = Cloudinary::Uploader.upload(items_params[:image])
+    @image = Cloudinary::Uploader.upload(item_params[:image])
     @item = Item.new(item_params)
     @item.image = @image['url']
 

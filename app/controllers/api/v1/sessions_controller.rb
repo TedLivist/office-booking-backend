@@ -2,7 +2,7 @@ class Api::V1::SessionsController < ApplicationController
   skip_before_action :authenticated
 
   def create
-    @user = User.find_by(username: params[:username])
+    @user = User.find_by(username: user_params[:username])
 
     if @user
       token = encode_token({ user_id: @user.id })

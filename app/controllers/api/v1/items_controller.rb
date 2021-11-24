@@ -11,14 +11,14 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def create
-    @image = Cloudinary::Uploader.upload(params[:image])
+    @image = Cloudinary::Uploader.upload(items_params[:image])
     @item = Item.new(item_params)
     @item.image = @image['url']
 
     if @item.save
       render json: { success: 'Item saved' }
     else
-      render json: { error: 'Unable to save item' }
+      render json: { error: [ 'Unable to save item' ] }, status: 400
     end
   end
 
@@ -29,7 +29,7 @@ class Api::V1::ItemsController < ApplicationController
       @updated_items = Item.all
       render json: @updated_items
     else
-      render json: { error: 'Item is not in storage or has been deleted' }
+      render json: { error: ['Item is not in storage or has been deleted'] }, status: 400
     end
   end
 

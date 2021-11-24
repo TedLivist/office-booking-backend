@@ -1,23 +1,7 @@
 class Api::V1::ReservationsController < ApplicationController
   def index
     @reservations = logged_in_user.reservations.includes(:item)
-    render json: {
-      reservations:
-        @reservations.map do |reservation|
-          {
-            id: reservation.id,
-            item_id: reservation.item_id,
-            start_date: reservation.start_date,
-            end_date: reservation.end_date,
-            item: {
-              id: reservation.item.id,
-              name: reservation.item.name,
-              location: reservation.item.location,
-              image: reservation.item.image
-            }
-          }
-        end
-    }.to_json
+    render json: @reservations.to_json(include: :item), status: :ok
   end
 
   def create

@@ -18,7 +18,7 @@ class Api::V1::ItemsController < ApplicationController
     if @item.save
       render json: { success: 'Item saved' }
     else
-      render json: { error: [ 'Unable to save item' ] }, status: 400
+      render json: { error: ['Unable to save item'] }, status: 400
     end
   end
 

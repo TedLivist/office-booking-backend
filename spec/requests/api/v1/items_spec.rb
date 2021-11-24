@@ -90,19 +90,7 @@ RSpec.describe 'api/v1/items', type: :request do
       produces 'application/json'
       security [Bearer: []]
       parameter name: :Authorization, in: :header, type: :string, description: 'Bearer Token'
-
       response(200, 'Item Deleted') do
-        schema type: :object,
-               properties: {
-                 id: { type: :integer },
-                 name: { type: :string },
-                 location: { type: :string },
-                 description: { type: :string },
-                 image: { type: :string },
-                 created_at: { type: :string },
-                 updated_at: { type: :string }
-               },
-               required: %w[id]
         let(:Authorization) { authenticated_header(user: create(:user)) }
         let(:id) { create(:item).id }
         run_test!

@@ -1,10 +1,6 @@
 require 'swagger_helper'
 
 describe 'Users API' do
-  before :each do
-    User.destroy_all
-  end
-
   path '/api/v1/users' do
     post 'Create a user' do
       tags 'Users SignUp'
@@ -14,18 +10,11 @@ describe 'Users API' do
         properties: {
           username: { type: :string }
         },
-        required: ['username']
+        required: %w[username]
       }
 
       response '200', 'User Created' do
-        schema type: :object,
-               properties: {
-                 user: { type: :string },
-                 token: { type: :string }
-               },
-               required: %w[user token]
-        # let!(:user) { User.create!(username: Faker::Name.name) }
-        let!(:username) { 'usaf' }
+        let!(:user) { { username: 'anotherNewName' } }
         run_test!
       end
 

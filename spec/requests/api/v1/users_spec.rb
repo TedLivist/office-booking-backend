@@ -1,8 +1,7 @@
 require 'swagger_helper'
 
 describe 'Users API' do
-
-  before :each do 
+  before :each do
     User.destroy_all
   end
 
@@ -26,7 +25,7 @@ describe 'Users API' do
                },
                required: %w[user token]
         # let!(:user) { User.create!(username: Faker::Name.name) }
-        let!(:username) { "usaf" }
+        let!(:username) { 'usaf' }
         run_test!
       end
 

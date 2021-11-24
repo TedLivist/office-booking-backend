@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 describe 'Users API' do
-path '/api/v1/sessions' do
+  path '/api/v1/sessions' do
     post 'Log a user' do
       tags 'Users login'
       consumes 'application/json'

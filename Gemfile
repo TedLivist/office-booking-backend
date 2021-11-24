@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.1'
+ruby '2.7.1'
 
 gem 'rubocop', '>= 1.0', '< 2.0'
 
@@ -30,7 +30,8 @@ gem 'jwt'
 gem 'cloudinary'
 
 gem "rswag", "~> 2.4"
-
+gem 'rails_12factor'
+gem 'foreman'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

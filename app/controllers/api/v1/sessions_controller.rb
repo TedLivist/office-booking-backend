@@ -1,13 +1,14 @@
-class Api::V1::UsersController < ApplicationController
+class Api::V1::SessionsController < ApplicationController
   skip_before_action :authenticated
 
   def create
-    @user = User.create(user_params)
-    if @user.valid?
+    @user = User.find_by(username: params[:username])
+
+    if @user
       token = encode_token({ user_id: @user.id })
       render json: { user: @user.username, token: token }, status: :ok
     else
-      render json: { error: 'Invalid username' }, status: 400
+      render json: { error: 'Incorrect user' }, status: :not_found
     end
   end
 

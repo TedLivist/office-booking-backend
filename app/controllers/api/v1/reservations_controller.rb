@@ -1,6 +1,6 @@
 class Api::V1::ReservationsController < ApplicationController
   def index
-    @reservations = User.find_by(username: params[:username]).reservations.includes(:item)
+    @reservations = logged_in_user.reservations.includes(:item)
     render json: {
       reservations:
         @reservations.map do |reservation|
@@ -22,20 +22,20 @@ class Api::V1::ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
-    @reservation.user_id = User.find_by(username: params[:username]).id
+    @reservation.user_id = logged_in_user.id
     if @reservation.save
-      render json: { success: ['Reservation saved'] }
+      render json: { success: ['Reservation saved'] }, status: :ok
     else
-      render json: { errors: ['Reservation failed '] }
+      render json: { errors: ['Reservation failed '] }, status: 400
     end
   end
 
   def destroy
     @reservation = Reservation.find(params[:id])
     if @reservation.destroy
-      render json: { success: ['Reservation deleted'] }
+      render json: { success: ['Reservation deleted'] }, status: :ok
     else
-      render json: { errors: ['Reservation delete failed '] }
+      render json: { errors: ['Reservation delete failed '] }, status: 400
     end
   end
 

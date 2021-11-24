@@ -136,9 +136,9 @@ paths:
                     type: string
                 required:
                 - id
-  "/api/v1/{username}/reservations":
+  "/api/v1/users/{user_username}/reservations":
     parameters:
-    - name: username
+    - name: user_username
       in: path
       description: username
       required: true
@@ -146,6 +146,8 @@ paths:
         type: string
     get:
       summary: list reservations
+      tags:
+      - Reservations List
       security:
       - Bearer: []
       parameters:
@@ -159,6 +161,8 @@ paths:
           description: successful
     post:
       summary: create reservation
+      tags:
+      - Reservations create
       security:
       - Bearer: []
       parameters:
@@ -168,10 +172,13 @@ paths:
         schema:
           type: string
       responses:
-        '201':
+        '200':
           description: successful
+  "/api/v1/users/{user_username}/reservations/{id}":
     delete:
       summary: delete reservation
+      tags:
+      - Reservations delete
       security:
       - Bearer: []
       parameters:
@@ -187,9 +194,9 @@ paths:
         schema:
           type: integer
       responses:
-        '204':
+        '200':
           description: successful
-  "/api/v1/login":
+  "/api/v1/sessions":
     post:
       summary: Log a user
       tags:

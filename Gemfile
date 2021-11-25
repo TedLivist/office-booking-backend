@@ -28,14 +28,13 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'rack-cors'
 gem 'jwt'
 gem 'cloudinary'
-
+gem 'rspec-rails'
 gem "rswag", "~> 2.4"
 gem 'rails_12factor'
 gem 'foreman'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
   gem 'rswag-specs'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.19'

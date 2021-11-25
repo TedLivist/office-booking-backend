@@ -86,7 +86,7 @@ GEM
       i18n (>= 1.6, < 2)
     ffi (1.15.4-x64-mingw32)
     foreman (0.87.2)
-    globalid (0.5.2)
+    globalid (0.6.0)
       activesupport (>= 5.0)
     http-accept (1.7.0)
     http-cookie (1.0.4)
@@ -265,4 +265,4 @@ RUBY VERSION
    ruby 2.7.1p83
 
 BUNDLED WITH
-   2.1.4
+   2.1.2

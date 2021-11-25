@@ -11,6 +11,10 @@
 
 [Office Booking Frontend ](https://github.com/TedLivist/office-booking-frontend)
 
+## Live versions
+### [Backend](https://office-booking.herokuapp.com/api-docs/index.html)
+### [Frontend](https://office-booking.netlify.app/)
+
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
@@ -48,6 +52,15 @@ Access documentation:
 ```
     localhost:3000/api-docs
 ```
+
+## Kanban Board
+![image](https://user-images.githubusercontent.com/45002654/143440803-7f272436-d861-4e40-98e5-b01f304eda9f.png)
+
+### [Link to the Kanban board](https://github.com/users/TedLivist/projects/1)
+
+### Number of contributors to the project => 4:
+Contributor listed under Authors section
+
 
 ## Authors
 

@@ -45,28 +45,41 @@ RSpec.describe 'api/v1/users/{user_username}/reservations', type: :request do
       end
     end
 
-    post('create reservation') do
+    post 'Create a reservation' do
       tags 'Reservations'
+      consumes 'application/json'
+      produces 'application/json'
       security [Bearer: []]
       parameter name: :Authorization, in: :header, type: :string, description: 'Bearer Token'
       parameter name: :user_username, in: :path, type: :string, description: 'user_username'
-      parameter name: :reservation,
-                in: :body,
-                schema: {
-                  type: :object,
-                  properties: {
-                    item_id: { type: :integer },
-                    start_date: { type: :string },
-                    end_date: { type: :string }
-                  },
-                  required: %w[item_id start_date end_date]
-                }
-      user = FactoryBot.create(:user)
-      item = FactoryBot.create(:item)
-      response(200, 'Reservation Created') do
+      parameter name: :reservation, in: :body, schema: {
+        type: :object,
+        properties: {
+          reservation: {
+            type: :object,
+            properties: {
+              item_id: { type: :integer },
+              start_date: { type: :string },
+              end_date: { type: :string }
+            }
+          }
+        },
+        required: %w[reservation]
+      }
+      response(200, 'OK') do
+        let(:user) { FactoryBot.create(:user) }
+        let(:item) { FactoryBot.create(:item) }
         let(:Authorization) { authenticated_header(user: user) }
         let(:user_username) { user.username }
-        let(:reservation) { { item_id: item.id, start_date: Date.today, end_date: Date.today + 1 } }
+        let(:reservation) do
+          {
+            reservation: {
+              item_id: item.id,
+              start_date: Date.today,
+              end_date: Date.today + 1
+            }
+          }
+        end
         run_test!
       end
     end

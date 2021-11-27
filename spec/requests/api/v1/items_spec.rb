@@ -33,6 +33,7 @@ RSpec.describe 'api/v1/items', type: :request do
 
     post('create item') do
       tags 'Items'
+      consumes 'application/json'
       produces 'application/json'
       security [Bearer: []]
       parameter name: :Authorization, in: :header, type: :string, description: 'Bearer Token'
@@ -49,7 +50,7 @@ RSpec.describe 'api/v1/items', type: :request do
                   required: %w[name location image description]
                 }
 
-      response(201, 'Item Created') do
+      response(200, 'Item Created') do
         let(:Authorization) { authenticated_header(user: create(:user)) }
         let(:item) { create(:item) }
         run_test!

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.1'
+ruby '3.0.1'
 
 gem 'rubocop', '>= 1.0', '< 2.0'
 
@@ -39,10 +39,6 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.19'
 end
-
-# group :test do
-#   gem "webmock", "~> 3.14"
-# end
 
 group :development do
   gem 'listen', '~> 3.3'

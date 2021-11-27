@@ -10,7 +10,10 @@ class Api::V1::ReservationsController < ApplicationController
     if @reservation.save
       render json: { success: ['Reservation saved'] }, status: :ok
     else
-      render json: { errors: ['Reservation failed '] }, status: 400
+      render json: { errors: [
+        'Reservation save failed',
+        @reservation.errors.full_messages
+      ] }, status: 400
     end
   end
 

@@ -1,6 +1,6 @@
 # Office booking backend Final project
 
-> Office booking is a rails REST API appliation that allows users to authenticate, add offices and make reservations.
+> Office booking is a rails REST API application that allows users to authenticate, add offices and make reservations.
 
 ## Built With
 
